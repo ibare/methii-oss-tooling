@@ -5,8 +5,10 @@
   "license": "MIT",
   "type": "module",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
+  "homepage": "https://github.com/ibare/methii-oss-tooling/tree/main/packages/vite-config-lib",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -39,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "url": "git+https://github.com/ibare/methii-oss-tooling.git",
     "directory": "packages/vite-config-lib"
   },
   "keywords": [

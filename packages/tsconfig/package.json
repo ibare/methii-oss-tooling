@@ -4,8 +4,10 @@
   "description": "Shared TypeScript configurations for Methii OSS packages",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
+  "homepage": "https://github.com/ibare/methii-oss-tooling/tree/main/packages/tsconfig",
   "files": [
     "*.json",
     "LICENSE",
@@ -18,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "url": "git+https://github.com/ibare/methii-oss-tooling.git",
     "directory": "packages/tsconfig"
   },
   "keywords": [

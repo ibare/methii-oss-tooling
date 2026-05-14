@@ -54,9 +54,22 @@ pnpm changeset
 
 ## 릴리스 흐름
 
+### 일반 릴리스 (자동화)
+
 1. PR에 changeset이 포함된 채로 `main`에 머지
 2. GitHub Actions의 `release` 워크플로가 자동으로 "Version Packages" PR 생성
-3. 해당 PR을 머지하면 버전 bump + 변경 로그가 갱신되고, npm에 자동 publish
+3. 해당 PR을 머지하면 버전 bump + 변경 로그가 갱신되고, npm에 자동 publish (provenance 서명 포함)
+
+### 첫 publish 절차 (한 번만)
+
+이 절차는 `0.1.0` 첫 등록 시 한 번만 수행합니다. 이후로는 위 자동화 흐름을 사용합니다.
+
+1. npm 계정에 `@methii-oss` 스코프 권한 확보 (조직 생성 또는 본인 스코프 활성화)
+2. npm Automation 토큰 발급 → GitHub 리포 Settings → Secrets and variables → Actions → `NPM_TOKEN` 등록
+3. `main` 브랜치를 GitHub에 푸시
+4. GitHub Actions → **Release** 워크플로 → **Run workflow** → `initial-publish: true` 체크 → 실행
+5. npm 레지스트리에서 4개 패키지(`@methii-oss/peer-policy`, `vite-config-lib`, `tsconfig`, `eslint-config`)가 `0.1.0`으로 등록되었는지 확인
+6. 이후로는 일반 릴리스 흐름 사용 — `initial-publish` 플래그는 다시 사용하지 말 것 (재실행 시 npm이 409로 거부)
 
 ## 라이선스
 
