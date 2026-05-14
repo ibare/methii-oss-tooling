@@ -1,0 +1,52 @@
+{
+  "name": "@methii-oss/peer-policy",
+  "version": "0.1.0",
+  "description": "Single source of truth for shared peer dependency versions across Methii OSS packages",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./matrix": {
+      "types": "./dist/matrix.d.ts",
+      "import": "./dist/matrix.js"
+    }
+  },
+  "bin": {
+    "methii-oss-check-peers": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@methii-oss/tsconfig": "workspace:*",
+    "@types/node": "^25.7.0",
+    "typescript": "^6.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "directory": "packages/peer-policy"
+  },
+  "keywords": [
+    "peer-dependencies",
+    "version",
+    "policy",
+    "matrix",
+    "methii",
+    "monorepo"
+  ]
+}

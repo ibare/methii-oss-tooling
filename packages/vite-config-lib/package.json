@@ -1,0 +1,52 @@
+{
+  "name": "@methii-oss/vite-config-lib",
+  "version": "0.1.0",
+  "description": "Vite library mode preset for Methii OSS packages with peer-dep externalization",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "dependencies": {
+    "@methii-oss/peer-policy": "workspace:*",
+    "vite-plugin-dts": "^5.0.0"
+  },
+  "devDependencies": {
+    "@methii-oss/tsconfig": "workspace:*",
+    "@types/node": "^25.7.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "directory": "packages/vite-config-lib"
+  },
+  "keywords": [
+    "vite",
+    "library",
+    "build",
+    "preset",
+    "methii"
+  ]
+}

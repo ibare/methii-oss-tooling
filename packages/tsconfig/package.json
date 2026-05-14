@@ -1,0 +1,30 @@
+{
+  "name": "@methii-oss/tsconfig",
+  "version": "0.1.0",
+  "description": "Shared TypeScript configurations for Methii OSS packages",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "*.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    "./base.json": "./base.json",
+    "./lib.json": "./lib.json",
+    "./react-lib.json": "./react-lib.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "directory": "packages/tsconfig"
+  },
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "config",
+    "methii"
+  ]
+}

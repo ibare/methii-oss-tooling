@@ -1,0 +1,9 @@
+{
+  "extends": "@methii-oss/tsconfig/lib.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["node"]
+  },
+  "include": ["src"]
+}

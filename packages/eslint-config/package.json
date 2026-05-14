@@ -1,0 +1,47 @@
+{
+  "name": "@methii-oss/eslint-config",
+  "version": "0.1.0",
+  "description": "ESLint flat config preset for Methii OSS packages",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./base": "./base.js",
+    "./react": "./react.js"
+  },
+  "files": [
+    "base.js",
+    "react.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "typecheck": "node --check base.js && node --check react.js"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.39.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "typescript-eslint": "^8.59.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/day1company/methii-oss-tooling.git",
+    "directory": "packages/eslint-config"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "flat-config",
+    "react",
+    "typescript",
+    "methii"
+  ]
+}
