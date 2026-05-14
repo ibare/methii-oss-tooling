@@ -52,16 +52,20 @@ export default [
 `base`:
 - `@eslint/js` recommended
 - `typescript-eslint` recommended (type-checked 비활성, 성능 우선)
-- `no-console: warn`, `no-debugger: warn`, `prefer-const: error`
-- `consistent-type-imports`, `no-unused-vars` (언더스코어 prefix 허용)
-- 기본 ignore: `node_modules`, `dist`, `build`, `coverage`, `.turbo`
+- `no-console: error`, `no-debugger: error`, `prefer-const: error`
+- `@typescript-eslint/consistent-type-imports: error` (inline `import type` 강제)
+- `@typescript-eslint/no-unused-vars: error` (언더스코어 prefix `_var` 허용)
+- 기본 ignore: `node_modules`, `dist`, `build`, `coverage`, `.turbo`, `*.min.js`
+
+> CLI/`bin/` 파일에서 `console`을 정당하게 쓰는 경우, 소비자 측 `eslint.config.js`에서 해당 파일 override로 `no-console: 'off'`를 두면 됩니다.
 
 `react`:
 - 위 모두 +
-- `eslint-plugin-react` recommended
+- `eslint-plugin-react` recommended + **`jsx-runtime` config** (React 17+ 자동 JSX transform)
 - `eslint-plugin-react-hooks` recommended
-- React 17+ new JSX transform 가정 (`react/react-in-jsx-scope: off`)
-- `react/prop-types: off` (TypeScript 사용 가정)
+- `eslint-plugin-jsx-a11y` recommended (접근성)
+- `react/react-in-jsx-scope: off`, `react/prop-types: off` (TypeScript 사용 가정)
+- `no-restricted-syntax: error` — **`React.FC` 패턴 금지** (`function Component(props: Props)` 형태 사용)
 
 ## 라이선스
 

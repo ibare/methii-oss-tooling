@@ -17,19 +17,27 @@ pnpm add -D @methii-oss/peer-policy
 | 카테고리 | 패키지 |
 |---|---|
 | React 생태계 | `react`, `react-dom` |
-| 캔버스/3D | `konva`, `react-konva`, `three`, `@types/three`, `gsap`, `framer-motion` |
+| 캔버스/3D/모션 | `konva`, `react-konva`, `three`, `@types/three`, `gsap`, `framer-motion` |
 | Tiptap | `@tiptap/core`, `@tiptap/pm`, `@tiptap/react`, `@tiptap/starter-kit` |
 | 상태/스키마 | `zustand`, `zod`, `immer` |
 | DnD | `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities` |
-| 스타일링 | `clsx`, `class-variance-authority`, `tailwind-merge`, `tailwindcss` |
+| 스타일링 | `clsx`, `class-variance-authority`, `tailwind-merge`, `tailwind-variants`, `tailwindcss` |
+| 폼 | `react-hook-form`, `@hookform/resolvers` |
+| i18n | `i18next`, `react-i18next`, `i18next-browser-languagedetector`, `i18next-resources-to-backend` |
+| 에디터/입력 | `monaco-editor`, `@monaco-editor/react`, `cmdk`, `embla-carousel-react`, `react-virtuoso`, `react-image-crop` |
+| 알림/UI 보조 | `sonner`, `@floating-ui/react` |
+| 시각화 | `recharts`, `d3-force`, `d3-hierarchy`, `polygon-clipping` |
 | 도메인 | `katex`, `axios`, `marked`, `@phosphor-icons/react`, `jsep` |
+| 저장/유틸 | `idb`, `uuid`, `modern-screenshot` |
 
 **서브패키지 패턴** (bundle external 일괄 적용):
 - `@radix-ui/*`, `@tiptap/*`, `@dnd-kit/*`, `@phosphor-icons/*`
 - `react/*`, `react-dom/*` (jsx-runtime 등 서브경로)
 - `node:*` (노드 빌트인)
 
-정확한 버전 범위는 [`src/matrix.ts`](./src/matrix.ts) 참고. 호스트(`@methii/web`)가 사용하는 버전을 단일 진실의 출처로 삼고, caret 범위(`^X.Y.0`)로 메이저/마이너를 고정합니다.
+정확한 버전 범위는 [`src/matrix.ts`](./src/matrix.ts) 참고. 호스트(`@methii/web`)가 사용하는 정확한 버전을 caret floor로 잡습니다 — 호스트가 `^19.2.5`를 쓰면 매트릭스도 `^19.2.5`. floor를 호스트와 일치시켜야 OSS 피처가 더 낮은 minor를 명시하다가 호스트 빌드 시점에 깜짝 충돌하는 케이스를 막을 수 있습니다.
+
+> **주의**: `monaco-editor`, `katex` 등 0.x 버전 패키지는 minor가 곧 major(`^0.16.x ↔ ^0.17.x`는 호환 불가)이므로, 호스트가 minor를 올릴 때 반드시 매트릭스를 함께 갱신해야 합니다.
 
 ## CLI 사용
 
@@ -71,7 +79,7 @@ import {
 } from '@methii-oss/peer-policy'
 
 // 1. 매트릭스 자체에 접근
-console.log(PEER_POLICY.exact['react']) // ^19.2.0
+console.log(PEER_POLICY.exact['react']) // ^19.2.5
 
 // 2. package.json 검증
 import pkg from './package.json' with { type: 'json' }

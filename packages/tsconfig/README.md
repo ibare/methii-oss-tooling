@@ -57,13 +57,17 @@ pnpm add -D @methii-oss/tsconfig typescript
 
 `base.json`에서 강제하는 핵심 옵션:
 
-- `target: ES2022`, `module: ESNext`, `moduleResolution: bundler`
+- `target: ES2022`, `module: ESNext`, `moduleResolution: bundler`, `moduleDetection: force`
 - `strict: true`, `noUncheckedIndexedAccess: true`, `noImplicitOverride: true`
+- `noFallthroughCasesInSwitch: true`, `noUncheckedSideEffectImports: true` (TS 5.6+)
+- `erasableSyntaxOnly: true` (TS 5.8+ — `enum`/parameter property 등 런타임 잔재 차단)
 - `isolatedModules: true`, `verbatimModuleSyntax: true`
 - `esModuleInterop: true`, `skipLibCheck: true`, `forceConsistentCasingInFileNames: true`
 
 `lib.json` 추가:
 - `declaration: true`, `declarationMap: true`, `sourceMap: true`
+- `noUnusedLocals: true`, `noUnusedParameters: true`
+- `outDir: ./dist`, `rootDir: ./src` (소비자가 덮어쓸 수 있음)
 
 `react-lib.json` 추가:
 - `jsx: react-jsx`, `jsxImportSource: react`
